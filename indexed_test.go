@@ -8,10 +8,10 @@ import (
 
 func TestIndexedWC(t *testing.T) {
 	d := Data{}
-	d.SetIntf(Indexed{Format: "hum#", Begin: 1, Width: 2}, 1)
-	d.SetIntf(Indexed{Format: "hum#", Begin: 1, Width: 2}, 2)
+	d.SetIntf(Indexed{Format: "hum#", Begin: 1, Zero: 1, Width: 2}, 1)
+	d.SetIntf(Indexed{Format: "hum#", Begin: 1, Zero: 1, Width: 2}, 2)
 	assert.Equal(t, map[string]string{
-		"hum01": "1",
+		"hum":   "1",
 		"hum02": "2",
 	}, d.Values())
 }

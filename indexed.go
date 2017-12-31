@@ -14,17 +14,17 @@ import (
 //
 // Examples:
 //
+//     WeatherCloud
+//     temp   First outdoor temperature
+//     temp02 Second outdoor temperature
+//
+//     Indexed{Format: "temp#", Begin: 1, Zero: 1, Width: 2}
+//
 //     Weather Underground
 //     tempf  First outdoor temperature
 //     temp2f Second outdoor temperature
 //
-//     Indexed{Format: "temp#f", Begin: 1, Zero: 2}
-//
-//     WeatherCloud
-//     temp01 First outdoor temperature
-//     temp02 Second outdoor temperature
-//
-//     Indexed{Format: "temp#", Begin: 1, Width: 2}
+//     Indexed{Format: "temp#f", Begin: 1, Zero: 1}
 type Indexed struct {
 	Format string // Template where the sharp symbol(#) will be substituted for the number
 	Begin  int    // Begin index number
