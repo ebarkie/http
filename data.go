@@ -2,8 +2,8 @@
 // Use of this source code is governed by the MIT license
 // that can be found in the LICENSE file.
 
-// Package request helps build a grouping of key/value pairs for
-// a data set.  It simplifies indexing keys and untyping data.
+// Package request helps build a grouping of untyped key/value
+// pairs for a data set.
 package request
 
 // Generator is an interface for adding key generators which are
