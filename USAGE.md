@@ -3,8 +3,8 @@
 import "github.com/ebarkie/request"
 ```
 
-Package request helps build a grouping of key/value pairs for a data set. It
-simplifies indexing keys and untyping data.
+Package request helps build a grouping of untyped key/value pairs for a data
+set.
 
 ## Usage
 
