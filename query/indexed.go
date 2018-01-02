@@ -1,8 +1,8 @@
-// Copyright (c) 2016-2017 Eric Barkie. All rights reserved.
+// Copyright (c) 2016-2018 Eric Barkie. All rights reserved.
 // Use of this source code is governed by the MIT license
 // that can be found in the LICENSE file.
 
-package request
+package query
 
 import (
 	"fmt"
@@ -34,14 +34,14 @@ type Indexed struct {
 
 // Generate generates a key using the formatting criteria and finding
 // the lowest a vailable index.
-func (i Indexed) Generate(d Data) (key string) {
+func (i Indexed) Generate(v Values) (key string) {
 	for j := i.Begin; ; j++ {
 		if j <= i.Zero {
 			key = strings.Replace(i.Format, "#", "", 1)
 		} else {
 			key = strings.Replace(i.Format, "#", fmt.Sprintf("%0"+strconv.Itoa(i.Width)+"d", j), 1)
 		}
-		if !d.Exists(key) {
+		if !v.Exists(key) {
 			return
 		}
 	}

@@ -1,26 +1,13 @@
-# request
-```
-import "github.com/ebarkie/request"
+# query
+
+```go
+import "github.com/ebarkie/http/query"
 ```
 
-Package request helps build a grouping of untyped key/value pairs for a data
-set.
+Package query helps build HTTP query key/value pairs by indexing keys and
+untyping values.
 
 ## Usage
-
-#### func  Float
-
-```go
-func Float(f float64) string
-```
-Float converts a float to a string.
-
-#### func  Int
-
-```go
-func Int(i int) string
-```
-Int converts a integer to a string.
 
 #### type Data
 
@@ -29,7 +16,7 @@ type Data struct {
 }
 ```
 
-Data represents a group of key/value pairs.
+Data holds the query data.
 
 #### func (*Data) Clear
 
@@ -98,7 +85,7 @@ Values returns all data key/value pairs that were previously set.
 
 ```go
 type Generator interface {
-	Generate(Data) (key string)
+	Generate(Values) (key string)
 }
 ```
 
@@ -120,22 +107,34 @@ Indexed generates an indexed key based on formatting criteria.
 
 Examples:
 
+    WeatherCloud
+    temp   First outdoor temperature
+    temp02 Second outdoor temperature
+
+    Indexed{Format: "temp#", Begin: 1, Zero: 1, Width: 2}
+
     Weather Underground
     tempf  First outdoor temperature
     temp2f Second outdoor temperature
 
-    Indexed{Format: "temp#f", Begin: 1, Zero: 2}
-
-    WeatherCloud
-    temp01 First outdoor temperature
-    temp02 Second outdoor temperature
-
-    Indexed{Format: "temp#", Begin: 1, Width: 2}
+    Indexed{Format: "temp#f", Begin: 1, Zero: 1}
 
 #### func (Indexed) Generate
 
 ```go
-func (i Indexed) Generate(d Data) (key string)
+func (i Indexed) Generate(v Values) (key string)
 ```
 Generate generates a key using the formatting criteria and finding the lowest a
 vailable index.
+
+#### type Values
+
+```go
+type Values interface {
+	Clear()
+	Exists(key string) bool
+	Values() map[string]string
+}
+```
+
+Values is an high level interface for accessing the query values.
