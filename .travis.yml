@@ -4,6 +4,6 @@ go:
 env:
   - GO111MODULE=on
 install:
-  - go get -v ./...
+  - go mod download
 script:
   - go test -v ./...
