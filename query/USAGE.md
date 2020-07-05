@@ -1,7 +1,7 @@
 # query
 
 ```go
-import "gitlab.com/ebarkie/http/query"
+import "github.com/ebarkie/http/query"
 ```
 
 Package query helps build HTTP query key/value pairs by indexing keys and
